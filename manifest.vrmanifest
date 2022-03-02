@@ -1,0 +1,20 @@
+{
+	"source" : "builtin",
+	"applications": [
+		{
+			"app_key": "elvissteinjr.void_scene",
+			
+			"launch_type": "binary",
+			"binary_path_windows": "SteamVR-VoidScene.exe",
+			
+			"image_path" : "capsule.png",
+			"wants_compositor_pause" : true,
+
+			"strings": {
+				"en_us": {
+					"name": "SteamVR Void Scene",
+					"description": "SteamVR Void Scene"
+				}
+			}
+		}]
+}
