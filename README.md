@@ -57,6 +57,19 @@ Just compile main.cpp and link it with OpenVR, Direct3D 11, and DXGI.
 For example: *g++ -o SteamVR-VoidScene.exe main.cpp openvr_api.dll -ld3d11 -ldxgi*  
 Or: *cl main.cpp openvr_api.lib d3d11.lib dxgi.lib shlapi.lib user32.lib /link /out:SteamVR-VoidScene.exe*
 
+### Build it in Docker
+If you don't have the full toolchain setup, you can build it in Docker:
+
+0. Install and set up docker.
+1. Pull this repository: `git clone git@github.com:elvissteinjr/SteamVR-VoidScene.git`
+2. Pull  the mingw docker tool chain image and run it mounting the SteamVR-Voidscene directory:`docker run -it -v ./SteamVR-VoidScene:/SteamVR-VoidScene mstorsjo/llvm-mingw bash`
+3. Inside the container, navigate to the SteamVR voidscene directory and build:
+```
+cd ../SteamVR-VoidScene
+
+i686-w64-mingw32-g++ -o SteamVR-VoidScene.exe main.cpp openvr_api.dll  -ld3d11 -ldxgi -I/opt/llvm-mingw/generic-w64-mingw32/include -static-libgcc -static-libstdc++
+```
+4. Your SteamVR-VoidScene directory (both on the host and in Docker) now contains the SteamVR-VoidScene.exe. Copy this exe and the openvr_api.dll to wherever you will be running the application from and you're good to go.
 # License
 SteamVR-VoidScene is licensed under the MIT License, see [LICENSE.txt](LICENSE.txt) for more information.
 
